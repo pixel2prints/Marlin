@@ -8,7 +8,12 @@ uncommented 	#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 uncommentd	#define z_safe_homing
 set		#define NOZZLE_TO_PROBE_OFFSET { -40, -12, -1.5 }
 uncommented	#define PIDTEMPBED
-
+ucomment	#define AUTO_BED_LEVELING_BILINEAR
+comment out	//#define EXTRAPOLATE_BEYOND_GRID
+		 //#define MESH_EDIT_MENU  
+		//#define LEVEL_BED_CORNERS
+		//#define EEPROM_AUTO_INIT 
+		//#define INDIVIDUAL_AXIS_HOMING_MENU
 
 *****Set Probing Speed*****
 set 		#define DEFAULT_MAX_FEEDRATE {500, 500, 20, 25 }
@@ -17,8 +22,18 @@ change 		#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
 
 **configuration_adv
 change		#define LIN_ADVANCE_K 0.4 
+uncommented	#if PROBE_SELECTED && !IS_KINEMATIC
+ 			#define PROBING_MARGIN_LEFT 46
+  			#define PROBING_MARGIN_RIGHT 46
+  			#define PROBING_MARGIN_FRONT 20
+  			#define PROBING_MARGIN_BACK 20
+		#endif
+
 
 
 
 ***Printer***
-M303 
+PID Auto Tune M303 
+Check K value
+E steps
+
